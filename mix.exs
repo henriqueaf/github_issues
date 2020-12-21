@@ -7,6 +7,7 @@ defmodule GithubIssues.MixProject do
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
+      escript: escript_config(),
       deps: deps()
     ]
   end
@@ -14,7 +15,7 @@ defmodule GithubIssues.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :httpoison]
+      extra_applications: [:logger, :httpoison, :jsx]
     ]
   end
 
@@ -26,5 +27,9 @@ defmodule GithubIssues.MixProject do
       { :httpoison, "~> 1.7" },
       { :jsx, "~> 3.0" }
     ]
+  end
+
+  defp escript_config do
+    [ main_module: GithubIssues.CLI ]
   end
 end
